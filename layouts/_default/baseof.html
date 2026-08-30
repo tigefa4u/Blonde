@@ -1,5 +1,11 @@
 <!doctype html>
-<html lang="{{ .Site.LanguageCode | default .Site.Language.Lang }}">
+{{- $languageTag := "" -}}
+{{- if ge hugo.Version "0.158.0" -}}
+  {{- $languageTag = .Site.Language.Locale | default .Site.Language.Name -}}
+{{- else -}}
+  {{- $languageTag = .Site.LanguageCode | default .Site.Language.Lang -}}
+{{- end -}}
+<html lang="{{ $languageTag }}">
   {{- partial "head.html" . -}}
   <body class="font-sans">
     <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800">

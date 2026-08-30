@@ -1,7 +1,7 @@
 baseURL = "https://example.com"
 title = "Blonde"
 author = "wamo"
-languageCode = "en"
+locale = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 theme = "Blonde"
@@ -191,3 +191,9 @@ archive = "archives"
   disableWatch = true
   source = 'hugo_stats.json'
   target = 'assets/notwatching/hugo_stats.json'
+
+# Hugo runs Tailwind CSS through the locally installed Node.js package. Since
+# Hugo v0.165.0, Tailwind CSS must be explicitly allowed as an external command.
+[security]
+  [security.exec]
+  allow = ['^(dart-)?sass$', '^go$', '^git$', '^node$', '^postcss$', '^tailwindcss$']

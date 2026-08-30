@@ -58,13 +58,17 @@ Copy at least the following files from `themes/Blonde/exampleSite` to the root f
 
 - package.json
 
-After that, run this command.
+Blonde requires Node.js 22 or later when used with Hugo 0.161.0 or later.
+After copying the file, install the dependencies from the root folder of your site:
 
 ```bash
 npm install
 ```
 
-For more information read the official [setup guide](https://gohugo.io/overview/installing/) of Hugo.
+The standalone Tailwind CSS executable is not supported by Hugo 0.161.0 or later.
+The included `package.json` installs Tailwind CSS as a local Node.js package instead.
+
+For more information read the official [installation guide](https://gohugo.io/installation/) for Hugo.
 
 ## Getting started
 
@@ -73,6 +77,11 @@ After installing the theme successfully it requires a just a few more steps to g
 ### Update config file
 
 Copy the `hugo.toml` in the exampleSite to the root of your Hugo site. Change strings as you like.
+
+The example configuration uses `locale`, which was introduced in Hugo 0.158.0. When using an older Hugo release, replace `locale` with `languageCode`. The theme templates support both forms.
+
+If you merge the example configuration into an existing `hugo.toml` instead of copying it, include the `[build]`, `[module]`, and `[security]` sections.
+The `[security.exec]` setting is required with Hugo 0.165.0 or later so Hugo can run the locally installed Tailwind CSS CLI.
 
 ### Check your site
 
